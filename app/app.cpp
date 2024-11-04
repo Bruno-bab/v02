@@ -18,48 +18,22 @@ namespace vsite::oop::v2
 
     void color::set_red(double r) 
     {
-        if (r < 0)
-            red = 0.;
-        else if (r > 1)
-            red = 1.;
-        else
-            red = r;
+        red = std::clamp(r, 0., 1.);
     }
 
     void color::set_green(double g)
     {
-        if (g < 0)
-            green = 0.;
-        else if (g > 1)
-            green = 1.;
-        else
-            green = g;
+        green = std::clamp(g, 0., 1.);
     }
 
     void color::set_blue(double b)
     {
-        if (b < 0)
-            blue = 0.;
-        else if (b > 1)
-            blue = 1.;
-        else
-            blue = b;
+        blue = std::clamp(b, 0., 1.);
     }
 
     double color::get_red() const { return red; }
     double color::get_green() const { return green; }
     double color::get_blue() const { return blue; }
-
-    color& color::operator=(const color& other)
-    {
-        if (this != &other)
-        {
-            red = other.red;
-            green = other.green;
-            blue = other.blue;
-        }
-        return *this;
-    }
     
     uint32_t color::get_color_ref() const
     {
